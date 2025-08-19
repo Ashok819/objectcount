@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Object Counter (COCO-SSD)</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- TensorFlow.js + COCO-SSD -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.3"></script>
+</head>
+<body>
+  <header>
+    <h1>Object Counter</h1>
+    <div class="controls">
+      <button id="startCam">Start Camera</button>
+      <button id="stopCam" disabled>Stop Camera</button>
+      <label class="file">
+        <input type="file" id="imageInput" accept="image/*" />
+        <span>Upload Image</span>
+      </label>
+      <label class="thresh">
+        Score ≥ <input id="threshold" type="number" min="0" max="1" step="0.05" value="0.5">
+      </label>
+    </div>
+  </header>
+
+  <main>
+    <div class="stage">
+      <video id="video" playsinline muted></video>
+      <canvas id="canvas"></canvas>
+    </div>
+
+    <aside>
+      <h2>Counts</h2>
+      <div id="totals"><em>Model loading…</em></div>
+      <button id="downloadCSV" disabled>Download CSV</button>
+    </aside>
+  </main>
+
+  <footer>
+    <small>Runs entirely in your browser using TensorFlow.js (COCO-SSD).</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
